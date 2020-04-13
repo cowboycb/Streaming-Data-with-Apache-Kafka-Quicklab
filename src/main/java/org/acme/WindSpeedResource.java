@@ -24,12 +24,4 @@ public class WindSpeedResource {
         return windSpeed;
     }
 
-    @Inject @Channel("windSpeedManual") Emitter<Integer> windSpeedEmitter;
-    @POST
-    @Path("/generate/{speed}")
-    public Response generate(@PathParam("speed") Integer speed) {
-        windSpeedEmitter.send(speed);
-        return Response.status(Response.Status.CREATED).entity(speed).build();
-    }
-
 }

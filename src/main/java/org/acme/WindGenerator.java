@@ -21,9 +21,4 @@ public class WindGenerator {
                 .map(tick -> random.nextInt(50));
     }
 
-    @Incoming("windSpeedManual")
-    @Outgoing("windSpeedKph")
-    public Integer generateManual(int windSpeedManual) {
-        return windSpeedManual;
-    }
 }
