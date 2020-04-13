@@ -1,13 +1,14 @@
 package org.acme;
 
-import io.smallrye.reactive.messaging.annotations.Channel;
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.reactivestreams.Publisher;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import org.jboss.resteasy.annotations.SseElementType;
 
 @Path("/windSpeed")
@@ -21,5 +22,14 @@ public class WindSpeedResource {
     @SseElementType("text/plain")
     public Publisher<Double> stream() {
         return windSpeed;
+    }
+
+    @Inject @Channel("windSpeedManual")
+    Emitter<Integer> windSpeedEmitter;
+    @POST
+    @Path("/generate/{speed}")
+    public Response generate(@PathParam("speed") Integer speed) {
+        windSpeedEmitter.send(speed);
+        return Response.status(Response.Status.CREATED).entity(speed).build();
     }
 }

@@ -1,5 +1,6 @@
 package org.acme;
 import io.reactivex.Flowable;
+import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -20,4 +21,9 @@ public class WindGenerator {
                 .map(tick -> random.nextInt(50));
     }
 
+    @Incoming("windSpeedManual")
+    @Outgoing("windSpeedKph")
+    public Integer generateManual(int windSpeedManual) {
+        return windSpeedManual;
+    }
 }
