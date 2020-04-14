@@ -6,7 +6,7 @@ import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
 import javax.enterprise.context.ApplicationScoped;
-
+@ApplicationScoped
 public class WindSpeedConverter {
 
     private static final double KphToMph = 0.621371;
