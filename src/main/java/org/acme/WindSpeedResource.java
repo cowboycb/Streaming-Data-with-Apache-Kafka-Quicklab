@@ -2,14 +2,13 @@ package org.acme;
 
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
+import org.jboss.resteasy.annotations.SseElementType;
 import org.reactivestreams.Publisher;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import org.jboss.resteasy.annotations.SseElementType;
 
 @Path("/windSpeed")
 public class WindSpeedResource {
