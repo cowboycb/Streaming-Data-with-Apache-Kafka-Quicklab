@@ -1,7 +1,6 @@
 package org.acme;
 
 import io.smallrye.reactive.messaging.annotations.Broadcast;
-import io.smallrye.reactive.messaging.annotations.Merge;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
